@@ -1,0 +1,57 @@
+﻿@using BlogDemo.Application.Features.Blogs.DTOs
+
+@{
+    ViewData["Title"] = "Blogs";
+    Layout = "_Layout";
+}
+
+@model GetBlogListDTO
+
+<section class="main-content-w3layouts-agileits">
+
+    <div class="container">
+
+        <h3 class="tittle">Blog Posts</h3>
+
+        <div class="inner-sec">
+            <div class="left-blog-info-w3layouts-agileits text-left">
+                <div class="row">
+                    @foreach (var blog in Model!.List)
+                    {
+                        <div class="col-lg-4 card">
+                            <a asp-action="Details" asp-route-id="@blog.Id">
+                                <img src="~/@blog.ThumbnailImage" class="card-img-top img-fluid" alt="Blog image">
+                            </a>
+
+                            <div class="card-body">
+                                <ul class="blog-icons my-4">
+                                    <li>
+                                        <a href="#">
+                                            <i class="far fa-calendar-alt"></i> @blog.CreatedOnUtc.ToLocalTime().ToLongDateString()
+                                        </a>
+                                    </li>
+                                    <li class="mx-2">
+                                        <a href="#">
+                                            <i class="far fa-comment"></i> @blog.CommentCount
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fas fa-eye"></i> @blog.CategoryName
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <h5 class="card-title">
+                                    <a asp-action="Details" asp-route-id="@blog.Id">@blog.Title</a>
+                                </h5>
+                                <p class="card-text mb-3">@blog.ShortContent[..blog.ShortContent.LastIndexOf(' ')]...</p>
+                                <a asp-action="Details" asp-route-id="@blog.Id" class="btn btn-primary read-m">Read More</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

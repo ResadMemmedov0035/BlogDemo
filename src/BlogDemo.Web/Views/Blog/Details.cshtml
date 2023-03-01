@@ -1,0 +1,154 @@
+﻿@using BlogDemo.Application.Features.Blogs.DTOs
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "_Layout";
+}
+
+@model GetBlogDTO
+
+<div class="container">
+    <div class="row">
+        <!--left-->
+        <div class="col-lg-8 left-blog-info-w3layouts-agileits text-left">
+            <div class="blog-grid-top">
+                <div class="b-grid-top">
+                    <div class="blog_info_left_grid">
+                        <img src="~/@Model!.Image" class="img-fluid" alt="">
+                    </div>
+                    <div class="blog-info-middle">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <i class="far fa-calendar-alt"></i> @Model.CreatedOnUtc.ToLocalTime().ToLongDateString()
+                                </a>
+                            </li>
+                            <li class="mx-2">
+                                <a href="#">
+                                    <i class="far fa-thumbs-up"></i> -- Likes
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="far fa-comment"></i> @Model.CommentCount Comments
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>
+                    <a href="single.html">@Model.Title</a>
+                </h3>
+                <p>
+                    @Model.Content
+                </p>
+                <a href="single.html" class="btn btn-primary read-m">Read More</a>
+            </div>
+
+            <div class="comment-top">
+                <h4>Comments</h4>
+                @await Component.InvokeAsync("Comments", new { blogId = Model.Id })
+            </div>
+            <div class="comment-top">
+                <h4>Leave a Comment</h4>
+                <div class="comment-bottom">
+                    <form action="#" method="post">
+                        <input class="form-control" type="text" name="Name" placeholder="Name" required="">
+                        <input class="form-control" type="email" name="Email" placeholder="Email" required="">
+
+                        <input class="form-control" type="text" name="Subject" placeholder="Subject" required="">
+
+                        <textarea class="form-control" name="Message" placeholder="Message..." required=""></textarea>
+                        <button type="submit" class="btn btn-primary submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!--//left-->
+        <!--right-->
+        <aside class="col-lg-4 agileits-w3ls-right-blog-con text-right">
+            <div class="right-blog-info text-left">
+                <div class="tech-btm">
+                    <img src="~/images/banner1.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="tech-btm">
+                    <h4>Sign up to our newsletter</h4>
+                    <p>Pellentesque dui, non felis. Maecenas male </p>
+                    <form action="#" method="post">
+                        <input type="email" placeholder="Email" required="">
+                        <input type="submit" value="Subscribe">
+                    </form>
+
+                </div>
+                <div class="tech-btm">
+                    <h4>Categories</h4>
+                    @await Component.InvokeAsync("Categories")
+                </div>
+                <div class="tech-btm">
+                    <h4>Top stories of the week</h4>
+
+                    <div class="blog-grids row mb-3">
+                        <div class="col-md-5 blog-grid-left">
+                            <a href="single.html">
+                                <img src="~/images/1.jpg" class="img-fluid" alt="">
+                            </a>
+                        </div>
+                        <div class="col-md-7 blog-grid-right">
+
+                            <h5>
+                                <a href="single.html">Pellentesque dui, non felis. Maecenas male non felis </a>
+                            </h5>
+                            <div class="sub-meta">
+                                <span>
+                                    <i class="far fa-clock"></i> 20 Jan, 2018
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="blog-grids row mb-3">
+                        <div class="col-md-5 blog-grid-left">
+                            <a href="single.html">
+                                <img src="~/images/6.jpg" class="img-fluid" alt="">
+                            </a>
+                        </div>
+                        <div class="col-md-7 blog-grid-right">
+                            <h5>
+                                <a href="single.html">Pellentesque dui, non felis. Maecenas male non felis </a>
+                            </h5>
+                            <div class="sub-meta">
+                                <span>
+                                    <i class="far fa-clock"></i> 20 Feb, 2018
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="single-gd tech-btm">
+                    <h4>Recent Post</h4>
+                    <div class="blog-grids">
+                        <div class="blog-grid-left">
+                            <a href="single.html">
+                                <img src="~/images/b1.jpg" class="img-fluid" alt="">
+                            </a>
+                        </div>
+                        <div class="blog-grid-right">
+
+                            <h5>
+                                <a href="single.html">Pellentesque dui, non felis. Maecenas male</a>
+                            </h5>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+        <!--//right-->
+    </div>
+</div>
+

@@ -1,0 +1,8 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+@if (TempData["AlertMessage"] != null)
+{
+    <script>alert('@TempData["AlertMessage"]')</script>
+}

@@ -1,0 +1,49 @@
+﻿@using BlogDemo.Application.Features.Comments.DTOs
+
+@{
+    Layout = null;
+}
+
+@model IEnumerable<GetCommentListItemDTO>
+
+@if (Model!.Any())
+    foreach (GetCommentListItemDTO comment in Model!)
+    {
+        <div class="media mb-5">
+            <img src="~/images/t1.jpg" alt="Profile picture" class="img-fluid" />
+
+            <div class="media-body">
+                <h5 class="mt-0">@comment.CommentorName</h5>
+                <p>@comment.Content</p>
+            </div>
+        </div>
+    }
+else
+{
+    <div class="media mb-5">No comments yet</div>
+}
+    
+
+@*<div class="media">
+    <img src="~/blog-template/images/t1.jpg" alt="" class="img-fluid" />
+    <div class="media-body">
+    <h5 class="mt-0">Joseph Goh</h5>
+    <p>
+    Lorem Ipsum convallis diam consequat magna vulputate malesuada. id dignissim sapien velit id felis ac cursus eros.
+    Cras a ornare elit.
+    </p>
+
+    <div class="media mt-3">
+    <a class="d-flex pr-3" href="#">
+    <img src="~/blog-template/images/t2.jpg" alt="" class="img-fluid" />
+    </a>
+    <div class="media-body">
+    <h5 class="mt-0">Richard Spark</h5>
+    <p>
+    Lorem Ipsum convallis diam consequat magna vulputate malesuada. id dignissim sapien velit id felis ac cursus eros.
+    Cras a ornare elit.
+    </p>
+    </div>
+    </div>
+    </div>
+    </div>*@
